@@ -36,8 +36,28 @@ from cable_thermal_model.model.model import Model
 from cable_thermal_model.model.model_air import StateAir
 from cable_thermal_model.model.model_soil import ModelSoil, StateSoil
 from cable_thermal_model.model.schemas.model_input_schemas import ScenarioModelSoil
-from cable_thermal_model.model.schemas.run_options import ModelSoilRunOptions
+from cable_thermal_model.model.schemas.run_options import ModelSoilRunOptions, SolutionMethod
 from cable_thermal_model.validation.cable_analysis import CableAnalysis
+
+
+def test_model_soil_passes_solution_method_to_cable(
+    model: ModelSoil,
+    scenario_constant: DataFrame[ScenarioModelSoil],
+    monkeypatch: pytest.MonkeyPatch,
+):
+    original_integrate_timestep = CableSoil.integrate_timestep
+    observed_methods: list[SolutionMethod] = []
+
+    def integrate_timestep_with_observation(self: CableSoil, *args: Any, **kwargs: Any) -> np.ndarray:
+        observed_methods.append(kwargs["solution_method"])
+        return original_integrate_timestep(self, *args, **kwargs)
+
+    monkeypatch.setattr(CableSoil, "integrate_timestep", integrate_timestep_with_observation)
+
+    model.run(scenario_constant, run_options={"solution_method": SolutionMethod.CrankNicolson})
+
+    assert observed_methods
+    assert set(observed_methods) == {SolutionMethod.CrankNicolson}
 
 
 def test_scenario_validation(single_circuit_env: StaticEnvSoil, scenario_constant: DataFrame[ScenarioModelSoil]):

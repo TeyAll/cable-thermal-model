@@ -43,6 +43,7 @@ from cable_thermal_model.model.cables.cable_soil import CableSoil
 from cable_thermal_model.model.cables.cable_trefoil_circuit_single_pipe import CableTrefoilCircuitSinglePipeInAir
 from cable_thermal_model.model.cables.enum_classes_cable import CableLayer, CableScreenLossType, PipeFillType
 from cable_thermal_model.model.cables.pipe import Pipe
+from cable_thermal_model.model.schemas.run_options import SolutionMethod
 from cable_thermal_model.validation.cable_analysis import CableAnalysis
 from tests.conftest import test_cable_fixtures
 
@@ -620,6 +621,39 @@ def test_integrate_timestep_cable_soil(single_core_cable_xlpe: CableSoil):
     assert np.isclose(new_solution[-1], boundary_temperature), (
         "The last value of the solution should match the boundary temperature."
     )
+
+
+@pytest.mark.parametrize("solution_method", list(SolutionMethod))
+def test_integrate_timestep_cable_soil_supports_solution_methods(
+    single_core_cable_xlpe: CableSoil, solution_method: SolutionMethod
+):
+    previous_solution = np.zeros(single_core_cable_xlpe.grid_size)
+
+    new_solution = single_core_cable_xlpe.integrate_timestep(
+        previous_solution=previous_solution,
+        time_step=300.0,
+        solution_at_boundary=10.0,
+        solution_method=solution_method,
+    )
+
+    assert new_solution.shape == previous_solution.shape
+    assert np.all(np.diff(new_solution) > 0)
+    assert np.isclose(new_solution[-1], 10.0)
+
+
+def test_integrate_timestep_cable_soil_crank_nicolson_remains_finite(single_core_cable_xlpe: CableSoil):
+    solution = np.zeros(single_core_cable_xlpe.grid_size)
+
+    for _ in range(100):
+        solution = single_core_cable_xlpe.integrate_timestep(
+            previous_solution=solution,
+            time_step=900.0,
+            solution_at_boundary=10.0,
+            solution_method=SolutionMethod.CrankNicolson,
+        )
+
+    assert np.all(np.isfinite(solution))
+    assert np.max(np.abs(solution)) <= 11.0
 
 
 def test_integrate_timestep_cable_air(single_core_cable_xlpe_in_air: CableAir):

@@ -264,6 +264,7 @@ class ModelSoil(Model[ModelSoilRunOptions, StateSoil, ScenarioModelSoil, StaticE
                 previous_solution=self_heating_contribution[cable_key],
                 time_step=time_step,
                 solution_at_boundary=solution_at_boundary,
+                solution_method=self.run_options.solution_method,
             )
 
         return new_self_heating_contribution
@@ -294,6 +295,7 @@ class ModelSoil(Model[ModelSoilRunOptions, StateSoil, ScenarioModelSoil, StaticE
                 previous_solution=mutual_heating_contribution[cable_key],
                 time_step=time_step,
                 solution_at_boundary=mutual_heating_effect[cable_key],
+                solution_method=self.run_options.solution_method,
             )
 
         return new_mutual_heating_contribution

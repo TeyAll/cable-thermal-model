@@ -2,13 +2,16 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 from copy import deepcopy
-from typing import Self
+from typing import TYPE_CHECKING, Self
 
 import numpy as np
 
 from cable_thermal_model.model.cables.abstract_cable import CableLayerProperties
 from cable_thermal_model.model.cables.cable import Cable
 from cable_thermal_model.model.cables.enum_classes_cable import CableLayer
+
+if TYPE_CHECKING:
+    from cable_thermal_model.model.schemas.run_options import SolutionMethod
 
 
 class CableSoil(Cable):
@@ -25,8 +28,9 @@ class CableSoil(Cable):
         previous_solution: np.ndarray,
         time_step: float,
         solution_at_boundary: float,
+        solution_method: "SolutionMethod | str" = "BackwardEuler",
     ) -> np.ndarray:
-        """This method solves the finite difference approximation to the heat equation using the implicit Euler method.
+        """Solve one finite-difference timestep for the selected integration method.
 
         For optimization purposes, the method uses the scipy.linalg.solve_banded method to solve the linear system.
         This means the three diagonals of finite difference matrix A are instead stored in a (3, N) array, where
@@ -38,16 +42,31 @@ class CableSoil(Cable):
             time_step (float): The size of the time steps [s] in the linearized
                 time grid.
             solution_at_boundary (float): The solution at the boundary grid point [°C] used as a boundary condition.
+            solution_method (SolutionMethod): The time-integration scheme to use.
 
         Returns:
             np.ndarray: The solution [°C] to the heat equation at the next timestep (t+1) for all grid points except
                 the final grid point, at which a boundary condition is enforced.
 
         """
-        A = self._get_processed_matrix(time_step=time_step)
+        method_name = getattr(solution_method, "value", solution_method)
+        alpha = {"BackwardEuler": 1.0, "CrankNicolson": 0.5}[method_name]
+
+        A = - alpha * self._banded_matrix * time_step
+        A[1, :] += self._capacity_grid[: -1]
+
+        B = (1 - alpha) * self._banded_matrix * time_step
+        B[1, :] += self._capacity_grid[: -1]
+
         b = self._heating_vector.copy()
-        b[-1] += self._upper_diagonal_last_element * solution_at_boundary
-        b = self._capacity_grid[:-1] * previous_solution[:-1] + time_step * b
+        b[-1] += self._upper_diagonal_last_element * (
+            alpha * solution_at_boundary + (1 - alpha) * previous_solution[-1]
+        )
+        b = time_step * b
+        previous_solution_without_boundary = previous_solution[:-1]
+        b += B[1, :] * previous_solution_without_boundary
+        b[:-1] += B[0, 1:] * previous_solution_without_boundary[1:]
+        b[1:] += B[2, :-1] * previous_solution_without_boundary[:-1]
 
         return np.append(self._solve_system(A=A, b=b), solution_at_boundary)
 

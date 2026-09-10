@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
+from enum import Enum
 from typing import Generic, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -10,6 +11,10 @@ from cable_thermal_model.model.cables.enum_classes_cable import CableLayer
 from cable_thermal_model.model.schemas.state_schemas import StateAir, StateSoil, StateT
 
 ModelRunOptionsT = TypeVar("ModelRunOptionsT", bound="ModelRunOptions")
+
+class SolutionMethod(str, Enum):
+    BackwardEuler = "BackwardEuler"
+    CrankNicolson = "CrankNicolson"
 
 
 class ModelRunOptions(BaseModel, Generic[StateT]):
@@ -38,6 +43,11 @@ class ModelRunOptions(BaseModel, Generic[StateT]):
     extra_solution_layers: tuple[CableLayer, ...] = Field(
         default_factory=tuple,
         description="Additional cable layers to include in the returned result for this run.",
+    )
+
+    solution_method: SolutionMethod = Field(
+        default=SolutionMethod.BackwardEuler,
+        description="The finite difference scheme to use for solving the model.",
     )
 
     @field_validator("extra_solution_layers", mode="after")
