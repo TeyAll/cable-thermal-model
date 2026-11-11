@@ -11,6 +11,114 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0](https://github.com/TeyAll/cable-thermal-model/compare/v2.2.1...v3.0.0) (2026-11-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* 
+
+### Features
+
+* **actions:** Activated OpenSSF Runner ([#129](https://github.com/TeyAll/cable-thermal-model/issues/129)) ([a1ea97c](https://github.com/TeyAll/cable-thermal-model/commit/a1ea97c5ea47c218af124b475783c28944f1d3ed))
+* **actions:** Add uv lock generation action ([#122](https://github.com/TeyAll/cable-thermal-model/issues/122)) ([1fcfd1f](https://github.com/TeyAll/cable-thermal-model/commit/1fcfd1f361b5d0dea3abb5f28508f8277d6116ce))
+* **actions:** Added OpenSSF Score estimation ([#113](https://github.com/TeyAll/cable-thermal-model/issues/113)) ([783d1a5](https://github.com/TeyAll/cable-thermal-model/commit/783d1a5255dc8648a276aed886ba173373809796))
+* add initial CodeQL workflow ([#78](https://github.com/TeyAll/cable-thermal-model/issues/78)) ([90bd9af](https://github.com/TeyAll/cable-thermal-model/commit/90bd9afa513515eb3874cead2dec4379771f911e))
+* add measurement points to soil model ([#49](https://github.com/TeyAll/cable-thermal-model/issues/49)) ([7145189](https://github.com/TeyAll/cable-thermal-model/commit/71451898a584028e3b23642c0efab7d8e5f1a8b2))
+* add method add_circuit_from_cable_specs to StaticEnv ([#72](https://github.com/TeyAll/cable-thermal-model/issues/72)) ([21b67c5](https://github.com/TeyAll/cable-thermal-model/commit/21b67c5c490cd9a80c5b3d5e5da6d22a870b4801))
+* added info to pyproject and created initial CHANGELOG ([#25](https://github.com/TeyAll/cable-thermal-model/issues/25)) ([93883a5](https://github.com/TeyAll/cable-thermal-model/commit/93883a5c47bf6815780893084b983a8e7de5b693))
+* added publishing workflow ([#22](https://github.com/TeyAll/cable-thermal-model/issues/22)) ([c060369](https://github.com/TeyAll/cable-thermal-model/commit/c0603692b60e670294cf39a4b13271dafdbe95e2))
+* **dependencies:** dependency update ([#148](https://github.com/TeyAll/cable-thermal-model/issues/148)) ([c06a8fc](https://github.com/TeyAll/cable-thermal-model/commit/c06a8fcfbfe629e34dfbd48dee02766905c5b100))
+* **diagrams:** class diagram ([#151](https://github.com/TeyAll/cable-thermal-model/issues/151)) ([12c3094](https://github.com/TeyAll/cable-thermal-model/commit/12c3094236fdede9f7369f733851190e86650c82))
+* **docs:** Patch to fix gh-pages upload ([#69](https://github.com/TeyAll/cable-thermal-model/issues/69)) ([95e46a2](https://github.com/TeyAll/cable-thermal-model/commit/95e46a2334a72bdfdf4991c13a0b169f695afc8c))
+* **docstrings:** Patched some small docstring issues ([#28](https://github.com/TeyAll/cable-thermal-model/issues/28)) ([d48a4fb](https://github.com/TeyAll/cable-thermal-model/commit/d48a4fb72aabbbd5063e5004eec541650d83aa63))
+* initial commit ([763ecd4](https://github.com/TeyAll/cable-thermal-model/commit/763ecd42e49ef2162fcc82476bb0bcbb0d380d34))
+* make states serializable ([#88](https://github.com/TeyAll/cable-thermal-model/issues/88)) ([a80032e](https://github.com/TeyAll/cable-thermal-model/commit/a80032e51027cc12457983fb73004a3f1d4081d2))
+* Migrated codebase to uv ([#43](https://github.com/TeyAll/cable-thermal-model/issues/43)) ([21021bf](https://github.com/TeyAll/cable-thermal-model/commit/21021bfb8fc49da3e464864f2f311bb25a94f71a))
+* **mkdocs:** QoL improvements ([#42](https://github.com/TeyAll/cable-thermal-model/issues/42)) ([7b3c791](https://github.com/TeyAll/cable-thermal-model/commit/7b3c79159802a7c3caa1fe0ba8fb359ea8d92a9c))
+* modified example notebooks to use example data from package ([#158](https://github.com/TeyAll/cable-thermal-model/issues/158)) ([8441bb8](https://github.com/TeyAll/cable-thermal-model/commit/8441bb86290058d254fe1749fa3e75ca5b76a66e))
+* re-added gh actions ([#36](https://github.com/TeyAll/cable-thermal-model/issues/36)) ([436a781](https://github.com/TeyAll/cable-thermal-model/commit/436a781d3d0aa5eae96f3ee880e01f43ee8c2145))
+* refactor of fdcable into cable and subclass ([45dba79](https://github.com/TeyAll/cable-thermal-model/commit/45dba79980bb2b68c1498cdd39758a35c9b1a994))
+* split cable.py into separate modules ([#64](https://github.com/TeyAll/cable-thermal-model/issues/64)) ([37af0a2](https://github.com/TeyAll/cable-thermal-model/commit/37af0a2bca84325e62fb94f46bebb95038c7f4f3))
+* update AbstractModel and related classes to use TypeVar for static_env. ([#39](https://github.com/TeyAll/cable-thermal-model/issues/39)) ([4ac26ba](https://github.com/TeyAll/cable-thermal-model/commit/4ac26bafa753d5bc6e84f678d3f084c66e6dfb48))
+
+
+### Bug Fixes
+
+* bumped version to 2.0.0 ([#67](https://github.com/TeyAll/cable-thermal-model/issues/67)) ([5d651cd](https://github.com/TeyAll/cable-thermal-model/commit/5d651cdc7e36854c1d110dc875ddf668f0750dab))
+* change hash to be consistent over different sessions ([#75](https://github.com/TeyAll/cable-thermal-model/issues/75)) ([c00fd32](https://github.com/TeyAll/cable-thermal-model/commit/c00fd323eb531a01fb2cf668b27e0b6ec4216e9c))
+* file format of uv lock ([#101](https://github.com/TeyAll/cable-thermal-model/issues/101)) ([fd8600f](https://github.com/TeyAll/cable-thermal-model/commit/fd8600f2b7cf8cb65b4398073fc3f9b4f2b13490))
+* fix the release please config ([#98](https://github.com/TeyAll/cable-thermal-model/issues/98)) ([37eefef](https://github.com/TeyAll/cable-thermal-model/commit/37eefefd46e1a011433a5c3be7291e9076959ef5))
+* improve finite difference method logic for cases where r_i is no… ([#71](https://github.com/TeyAll/cable-thermal-model/issues/71)) ([71767fb](https://github.com/TeyAll/cable-thermal-model/commit/71767fbd9421553a2717c23472a006f230fb2281))
+* release please ([#102](https://github.com/TeyAll/cable-thermal-model/issues/102)) ([4accc5c](https://github.com/TeyAll/cable-thermal-model/commit/4accc5cea97ca987c01f7e1e89e85733be8d3bad))
+* separate scenario from Model object and improve update of soil properties ([#68](https://github.com/TeyAll/cable-thermal-model/issues/68)) ([e12b8be](https://github.com/TeyAll/cable-thermal-model/commit/e12b8beb54316cfc296a31514067a2001c6c54b6))
+* sonar token ([#45](https://github.com/TeyAll/cable-thermal-model/issues/45)) ([b1780eb](https://github.com/TeyAll/cable-thermal-model/commit/b1780ebd4728aa9fa71eec199ce0774c725adf1c))
+* the trigger for publish workflow ([#103](https://github.com/TeyAll/cable-thermal-model/issues/103)) ([9768930](https://github.com/TeyAll/cable-thermal-model/commit/9768930ae3671fc7783ea259480999dc9af8ee7d))
+* treat cables with PE insulation material as XLPE cables for screen loss function ([#86](https://github.com/TeyAll/cable-thermal-model/issues/86)) ([bf52607](https://github.com/TeyAll/cable-thermal-model/commit/bf526079f0d7e6e6d1b74582326e5df8c1b6f53a))
+* type hinting for scenario validation in ModelFactory ([#48](https://github.com/TeyAll/cable-thermal-model/issues/48)) ([92e1213](https://github.com/TeyAll/cable-thermal-model/commit/92e1213908f9fb03fa2c473e2ba318406649aa92))
+* update default cable source file path and refactor scenario setting method. ([#59](https://github.com/TeyAll/cable-thermal-model/issues/59)) ([4a041c5](https://github.com/TeyAll/cable-thermal-model/commit/4a041c5c1a922ac22ff0d919652e5b719dadf900))
+* various fixes to documentation ([#29](https://github.com/TeyAll/cable-thermal-model/issues/29)) ([73cbdc6](https://github.com/TeyAll/cable-thermal-model/commit/73cbdc60922ce98ddd8f84d6ce51432f53155951))
+
+
+### Dependencies
+
+* bump https://github.com/astral-sh/ruff-pre-commit ([#130](https://github.com/TeyAll/cable-thermal-model/issues/130)) ([3f88a40](https://github.com/TeyAll/cable-thermal-model/commit/3f88a40ef9bd8383cd2073c3a95c93cf72fcdabd))
+* bump https://github.com/pre-commit/mirrors-mypy ([#137](https://github.com/TeyAll/cable-thermal-model/issues/137)) ([5595ed0](https://github.com/TeyAll/cable-thermal-model/commit/5595ed00a26ed26e69ceee8deeeae67a52c51502))
+* bump ipykernel from 7.3.0 to 7.4.0 ([#133](https://github.com/TeyAll/cable-thermal-model/issues/133)) ([f5c205e](https://github.com/TeyAll/cable-thermal-model/commit/f5c205ed6a52853f85dc56a42171f330495202e4))
+* bump ipython from 9.17.1 to 9.18.1 ([#177](https://github.com/TeyAll/cable-thermal-model/issues/177)) ([66d77d2](https://github.com/TeyAll/cable-thermal-model/commit/66d77d2877465fd0f8173baeeece0eade96d1033))
+* bump matplotlib from 3.11.1 to 3.11.2 ([#117](https://github.com/TeyAll/cable-thermal-model/issues/117)) ([6ecb4f7](https://github.com/TeyAll/cable-thermal-model/commit/6ecb4f7e8961dcc2dd0f6c9babb225d9a8435c93))
+* bump mkdocs-llmstxt from 0.5.0 to 0.5.1 ([#138](https://github.com/TeyAll/cable-thermal-model/issues/138)) ([2a4d019](https://github.com/TeyAll/cable-thermal-model/commit/2a4d01937f2408cb3e56efb100cf40e40ec25d30))
+* bump mkdocs-material from 9.7.7 to 9.8.0 ([#169](https://github.com/TeyAll/cable-thermal-model/issues/169)) ([2ad97bc](https://github.com/TeyAll/cable-thermal-model/commit/2ad97bc5f878c7ddd46f40276dc8ecbb0d8dc25f))
+* bump mkdocstrings-python from 2.0.9 to 2.0.10 ([#179](https://github.com/TeyAll/cable-thermal-model/issues/179)) ([4790c98](https://github.com/TeyAll/cable-thermal-model/commit/4790c98a9a1798f49cd3881bb7823df4d38442ef))
+* bump pandas from 2.3.3 to 3.0.5 ([#91](https://github.com/TeyAll/cable-thermal-model/issues/91)) ([294e64f](https://github.com/TeyAll/cable-thermal-model/commit/294e64f233c3e2348199905b5eabed12d63438a1))
+* bump pandas from 3.0.6 to 3.1.0 ([#167](https://github.com/TeyAll/cable-thermal-model/issues/167)) ([544aee8](https://github.com/TeyAll/cable-thermal-model/commit/544aee83677fb4ddf62aee5111df88e0b5fb6f0d))
+* bump pandas-stubs from 3.0.5.260730 to 3.0.5.260914 ([#115](https://github.com/TeyAll/cable-thermal-model/issues/115)) ([f9ae562](https://github.com/TeyAll/cable-thermal-model/commit/f9ae5626f9bfb6ef74b567630eb423a4da1c8b64))
+* bump pandera from 0.33.1 to 0.34.1 ([#139](https://github.com/TeyAll/cable-thermal-model/issues/139)) ([6c00855](https://github.com/TeyAll/cable-thermal-model/commit/6c0085562aa178bf48de54812e96bba7e54eaf5d))
+* bump pandera from 0.34.1 to 0.35.0 ([#166](https://github.com/TeyAll/cable-thermal-model/issues/166)) ([1afe2e6](https://github.com/TeyAll/cable-thermal-model/commit/1afe2e634c531c8dfc3c7394b9dd8c7f71feb467))
+* bump pydantic from 2.14.1 to 2.14.2 ([#182](https://github.com/TeyAll/cable-thermal-model/issues/182)) ([f4c43dd](https://github.com/TeyAll/cable-thermal-model/commit/f4c43dd97ea9120734b8073e49b7b11c1bd8fa0b))
+* bump pytest-mock from 3.15.1 to 3.16.0 ([#131](https://github.com/TeyAll/cable-thermal-model/issues/131)) ([85048e3](https://github.com/TeyAll/cable-thermal-model/commit/85048e32e2f32affb839437a12dfc21c032edfe7))
+* bump pytest-mock from 3.16.0 to 3.17.0 ([#170](https://github.com/TeyAll/cable-thermal-model/issues/170)) ([abcadd4](https://github.com/TeyAll/cable-thermal-model/commit/abcadd478e4ad3cbbc42f39a310edce9564339cc))
+* bump reuse from 6.2.0 to 6.3.0 ([#181](https://github.com/TeyAll/cable-thermal-model/issues/181)) ([574c669](https://github.com/TeyAll/cable-thermal-model/commit/574c6691f47a9675878711319f9f4ef587b460b2))
+* bump ruff from 0.15.22 to 0.16.5 ([#90](https://github.com/TeyAll/cable-thermal-model/issues/90)) ([c006533](https://github.com/TeyAll/cable-thermal-model/commit/c0065339c09ab9031ec91bb14529b7579937420c))
+* bump ruff from 0.16.10 to 0.17.3 ([#180](https://github.com/TeyAll/cable-thermal-model/issues/180)) ([83baec5](https://github.com/TeyAll/cable-thermal-model/commit/83baec5213db6c1f7fbc2a1d3cb45dc19b860b5a))
+* bump ruff from 0.16.5 to 0.16.6 ([#109](https://github.com/TeyAll/cable-thermal-model/issues/109)) ([3321de4](https://github.com/TeyAll/cable-thermal-model/commit/3321de44604be3d2aeeac11542a121582c7ff4e7))
+* bump ruff from 0.16.6 to 0.16.7 ([#116](https://github.com/TeyAll/cable-thermal-model/issues/116)) ([a3a4abf](https://github.com/TeyAll/cable-thermal-model/commit/a3a4abfc23a1e7e61bb3594144366ae1b58efee9))
+* bump ruff from 0.16.8 to 0.16.9 ([#132](https://github.com/TeyAll/cable-thermal-model/issues/132)) ([c1d4c5d](https://github.com/TeyAll/cable-thermal-model/commit/c1d4c5df9372097991798d8afa1d1af29033a4ba))
+* bump structlog from 25.5.0 to 26.1.0 ([#89](https://github.com/TeyAll/cable-thermal-model/issues/89)) ([370a972](https://github.com/TeyAll/cable-thermal-model/commit/370a9721cad14df0fba51dd8c07acd21b7256f77))
+* bump the uv group across 1 directory with 7 updates ([#162](https://github.com/TeyAll/cable-thermal-model/issues/162)) ([714d702](https://github.com/TeyAll/cable-thermal-model/commit/714d702a506834332aa46d2b4f1fc2c4ed9df438))
+* update uv-build requirement ([#168](https://github.com/TeyAll/cable-thermal-model/issues/168)) ([1467c70](https://github.com/TeyAll/cable-thermal-model/commit/1467c704537cb263646c147ab9fdf451f3674dea))
+* update uv-build requirement ([#93](https://github.com/TeyAll/cable-thermal-model/issues/93)) ([f389d07](https://github.com/TeyAll/cable-thermal-model/commit/f389d07f0fae313289907c403c8ff765d36f6350))
+
+
+### Documentation
+
+* add documentation page about FD method ([#37](https://github.com/TeyAll/cable-thermal-model/issues/37)) ([6234847](https://github.com/TeyAll/cable-thermal-model/commit/6234847e87feb38d4835889418dbd40896cab2da))
+* add heat equation docs ([#35](https://github.com/TeyAll/cable-thermal-model/issues/35)) ([1c31224](https://github.com/TeyAll/cable-thermal-model/commit/1c31224767c91fda3115895c5cf7e9dc024919cb))
+* add stateful documentation ([#23](https://github.com/TeyAll/cable-thermal-model/issues/23)) ([59755dc](https://github.com/TeyAll/cable-thermal-model/commit/59755dc0d7b200d7fe8bc7b63a76334b2a2cd82b))
+
+
+### Miscellaneous Chores
+
+* add pre-commit package ecosystem to dependabot configuration ([#63](https://github.com/TeyAll/cable-thermal-model/issues/63)) ([5b92394](https://github.com/TeyAll/cable-thermal-model/commit/5b92394ac0698418e7337f2542b399a58de88a42))
+* add sonarcloud scan to cable thermal model ([#34](https://github.com/TeyAll/cable-thermal-model/issues/34)) ([46c2f8f](https://github.com/TeyAll/cable-thermal-model/commit/46c2f8f71f7e7236ab6bb87deb3c83cd2dab7cd2))
+* add uv lock to release please PR ([#100](https://github.com/TeyAll/cable-thermal-model/issues/100)) ([e091729](https://github.com/TeyAll/cable-thermal-model/commit/e091729ced25500725e981997ba0695ced58f9d4))
+* added instructions for pip and poetry ([#33](https://github.com/TeyAll/cable-thermal-model/issues/33)) ([9188658](https://github.com/TeyAll/cable-thermal-model/commit/91886583206f1fbce548b15850af0d289880741f))
+* bump version ([#77](https://github.com/TeyAll/cable-thermal-model/issues/77)) ([5228e4e](https://github.com/TeyAll/cable-thermal-model/commit/5228e4e36fb57b4892173f9d6bc65e15138626f0))
+* Bumped version to 2.1.0 ([#74](https://github.com/TeyAll/cable-thermal-model/issues/74)) ([b148433](https://github.com/TeyAll/cable-thermal-model/commit/b148433c16ce0e6a9de55e1a7e6e66f54dd4dbe4))
+* privatize model methods ([#21](https://github.com/TeyAll/cable-thermal-model/issues/21)) ([f1fd730](https://github.com/TeyAll/cable-thermal-model/commit/f1fd730a0c98bef5a024b529a588dbe5b71b90eb))
+* regenerate uv.lock ([#123](https://github.com/TeyAll/cable-thermal-model/issues/123)) ([c6f9d3c](https://github.com/TeyAll/cable-thermal-model/commit/c6f9d3cb0d20d45cdb44acf32fdad1077e3e5bd0))
+* release main ([#107](https://github.com/TeyAll/cable-thermal-model/issues/107)) ([4258554](https://github.com/TeyAll/cable-thermal-model/commit/42585547a931d53303e76d02acd02a75c9cf55d1))
+* release main ([#99](https://github.com/TeyAll/cable-thermal-model/issues/99)) ([b932211](https://github.com/TeyAll/cable-thermal-model/commit/b932211416f17af7de285a743a891f88bb25dc6d))
+* release please and trigger publishing workflow on release ([#87](https://github.com/TeyAll/cable-thermal-model/issues/87)) ([60c8d44](https://github.com/TeyAll/cable-thermal-model/commit/60c8d44fe3ca478181b2044c85ee2d0727d95146))
+* remove sonar and reconfigure mkdocs generation ([#47](https://github.com/TeyAll/cable-thermal-model/issues/47)) ([64ce3c7](https://github.com/TeyAll/cable-thermal-model/commit/64ce3c7c66182369115c14a9736cc5afd5a59126))
+* remove unused cff file ([#26](https://github.com/TeyAll/cable-thermal-model/issues/26)) ([c24cf90](https://github.com/TeyAll/cable-thermal-model/commit/c24cf90497f0a65190784c04f071dfba2b7f6e8b))
+* update dependencies ([#84](https://github.com/TeyAll/cable-thermal-model/issues/84)) ([0ab52e1](https://github.com/TeyAll/cable-thermal-model/commit/0ab52e13ae3cf910dbfe615bccdf46d795c03d66))
+* update package ecosystem from pip to uv in dependabot configuration ([#61](https://github.com/TeyAll/cable-thermal-model/issues/61)) ([f93b52f](https://github.com/TeyAll/cable-thermal-model/commit/f93b52f554e7a718fcd6d76dd1fd1593cb6c4fc0))
+* update packages and libraries ([#60](https://github.com/TeyAll/cable-thermal-model/issues/60)) ([8cd0019](https://github.com/TeyAll/cable-thermal-model/commit/8cd0019d7a328aeed0fc669493a023efbf965963))
+* update the release please workflow ([#104](https://github.com/TeyAll/cable-thermal-model/issues/104)) ([c3321ab](https://github.com/TeyAll/cable-thermal-model/commit/c3321ab7c8042580e68fd9dc610ed4464cb9b556))
+* update to the new managed runners ([#80](https://github.com/TeyAll/cable-thermal-model/issues/80)) ([a579c16](https://github.com/TeyAll/cable-thermal-model/commit/a579c16801e5a528e046b0a4508ff5e4a35d3d63))
+* update workflow to publish to pipy org ([#106](https://github.com/TeyAll/cable-thermal-model/issues/106)) ([e98d05f](https://github.com/TeyAll/cable-thermal-model/commit/e98d05fc5d75f621929b7e1862fac8afbdb1abbe))
+
 ## [2.2.1](https://github.com/alliander-opensource/cable-thermal-model/compare/v2.2.0...v2.2.1) (2026-09-09)
 
 
